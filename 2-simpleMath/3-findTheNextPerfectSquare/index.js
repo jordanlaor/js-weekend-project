@@ -11,9 +11,8 @@ findNextSquare(114) --> returns -1 since 114 is not a perfect */
 
 function findNextSquare(number) {
   const sqrtNumber = Math.sqrt(number);
-  if(!Number.isInteger(sqrtNumber)){
+  if (!Number.isInteger(sqrtNumber)) {
     return -1;
   }
   return (sqrtNumber + 1) ** 2;
-  
 }
