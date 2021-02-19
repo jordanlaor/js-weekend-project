@@ -6,4 +6,23 @@ const findUnique = (arr) => {
   arr.sort((a, b) => a - b);
   return arr[0] === arr[1] ? arr[arr.length - 1] : arr[0];
 };
-// TODO try with subtract
+
+const findUniqueV2 = (arr) => {
+  const results = arr.map((value, index, arr) => {
+    const result = [];
+    if (index !== 0 && index !== arr.length - 1) {
+      result.push(value - arr[index - 1]);
+      result.push(value - arr[index + 1]);
+    }
+    if (index === 0) {
+      result.push(value - arr[arr.length - 1]);
+      result.push(value - arr[index + 1]);
+    }
+    if (index === arr.length - 1) {
+      result.push(value - arr[index - 1]);
+      result.push(value - arr[0]);
+    }
+    return result;
+  });
+  return arr[results.findIndex((element) => element[0] && element[1])];
+};
